@@ -76,21 +76,23 @@ const mutations = {
             const usuario = await obterUsuario(_, { filtro })
             if(usuario) {
                 const { id } = usuario
-                if(dados.perfis) {
-                    await db('usuarios_perfis')
-                        .where({ usuario_id: id }).delete()
+                if(ctx.admin && dados.perfis){
+                    if(dados.perfis) {
+                        await db('usuarios_perfis')
+                            .where({ usuario_id: id }).delete()
 
-                    for(let filtro of dados.perfis) {
-                        const perfil = await obterPerfil(_, {
-                            filtro
-                        })
-                        
-                        if(perfil) {
-                            await db('usuarios_perfis')
-                                .insert({
-                                    perfil_id: perfil.id,
-                                    usuario_id: id
-                                })
+                        for(let filtro of dados.perfis) {
+                            const perfil = await obterPerfil(_, {
+                                filtro
+                            })
+                            
+                            if(perfil) {
+                                await db('usuarios_perfis')
+                                    .insert({
+                                        perfil_id: perfil.id,
+                                        usuario_id: id
+                                    })
+                            }
                         }
                     }
                 }
