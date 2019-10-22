@@ -7,7 +7,7 @@ module.exports = async ({ req }) => {
    /*
    *Simula um usuario logado em Dev, do tipo Admini
    */
-   await require('./simularUsuarioLogado')(req)
+   //await require('./simularUsuarioLogado')(req)
 
 
    /**
@@ -41,8 +41,6 @@ module.exports = async ({ req }) => {
 
    const err = new Error("Acesso Negado!")
 
-   // console.log(usuario)
-   // console.log(admin)
 
    return {
       usuario,
