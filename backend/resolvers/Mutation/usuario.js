@@ -74,7 +74,7 @@ const mutations = {
 
         
         ctx && ctx.validarUsuarioFiltro(filtro)
-        console.log('Chegou aki')
+        
         try {
             const usuario = await obterUsuario(_, { filtro })
             if(usuario) {
