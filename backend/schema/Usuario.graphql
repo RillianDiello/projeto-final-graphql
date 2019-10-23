@@ -2,8 +2,8 @@ type Usuario {
     id: Int
     nome: String!
     email: String!
-    perfis: [Perfil]
     token: String
+    perfis: [Perfil]
 }
 
 input UsuarioInput {
@@ -19,7 +19,7 @@ input UsuarioRegistrarInput {
     senha: String!
 }
 
-input UsuarioLoginInput{
+input UsuarioLoginInput {
     email: String!
     senha: String!
 }
