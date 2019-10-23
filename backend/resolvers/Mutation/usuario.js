@@ -71,7 +71,10 @@ const mutations = {
 
     },
     async alterarUsuario(_, { filtro, dados }, ctx) {
+
+        
         ctx && ctx.validarUsuarioFiltro(filtro)
+        console.log('Chegou aki')
         try {
             const usuario = await obterUsuario(_, { filtro })
             if(usuario) {
