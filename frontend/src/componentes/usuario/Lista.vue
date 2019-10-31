@@ -31,6 +31,7 @@
 
 <script>
 import Erros from '../comum/Erros'
+import gql from 'graphql-tag'
 
 export default {
     components: { Erros },
@@ -47,10 +48,27 @@ export default {
         }
     },
     methods: {
+        /*
+        * A lista utiliza o conceito de fetchPolicy, que tal como o variables. 
+        Indica uma manipulação da nossa consulta. a propriedade fetchPolicy com network-only
+        permite que a cache seja limpada e retornada um consulta efetiva ao banco
+        e desta forma validamos os acessos
+        */
         obterUsuarios() {
-            // console.log('obterUsuarios')
-            console.log(this.$api)            
-            
+            this.$api.query({
+                query: gql`query {
+                    usuarios { 
+                        id nome email perfis { nome }
+                    }
+                }`,
+                fetchPolicy: 'network-only'
+            }).then(resultado => {
+                this.usuarios = resultado.data.usuarios
+                this.erros = null
+            }).catch(e => {
+                this.usuarios = []
+                this.erros = e
+            })
         }
     }
 }

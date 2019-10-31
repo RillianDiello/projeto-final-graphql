@@ -72,7 +72,7 @@ export default {
                             senha: $senha
                         }
                     ) { 
-                        id nome email token perfis { nome }
+                        id nome email token perfis { rotulo }
                     }
                 }`,
                 variables: {

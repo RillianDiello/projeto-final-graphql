@@ -75,7 +75,7 @@ export default {
                                 senha: $senha
                             }
                         ){
-                            id nome email perfis { nome }
+                            id nome email perfis { rotulo }
                         }
                     }
                 `,
