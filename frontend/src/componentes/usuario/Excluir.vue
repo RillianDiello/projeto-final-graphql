@@ -56,26 +56,25 @@ export default {
                 mutation: gql`mutation (
                     $id: Int
                     $email: String
-                ){
-                    excluirUsuario(
+                ) {
+                    excluirUsuario (
                         filtro: {
-                            id: $ID
+                            id: $id
                             email: $email
                         }
-                    ){
+                    ) { 
                         id nome email
                     }
-                }
-            }`, 
-            variables: {
-                id: this.filtro.id,
-                email: this.filtro.email
-            }
+                }`,
+                variables: {
+                    id: this.filtro.id,
+                    email: this.filtro.email,
+                },
             }).then(resultado => {
-                this.dados = resultado.data.excluirUsuario            
+                this.dados = resultado.data.excluirUsuario
                 this.filtro = {}
-                this.erros = null;            
-            }).catch( e => {
+                this.erros = null
+            }).catch(e => {
                 this.erros = e
             })
         }
