@@ -90,6 +90,20 @@ export default {
         alterarUsuario() {
             // Implementar
         },
+                        dados:{
+
+                        }
+                    ){
+                        id nome
+                    }
+                }               
+            }) }).then(resultado => {
+                this.perfis = resultado.data.perfis
+                this.erros = null
+            }).catch(e => {
+                this.erros = e
+            })
+        ,
         obterPerfis() {
             this.$api.query({
                 query: gql`{ perfis { id rotulo } }`

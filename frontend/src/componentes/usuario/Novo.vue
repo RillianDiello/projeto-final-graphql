@@ -71,6 +71,7 @@ export default {
                 this.dados.perfis.map(p => p.rotulo).join(', ')
         },
         perfisSelecionados() {
+            // retorno um objeto com o valor do perfil
             if(this.usuario.perfis) {
                 return this.usuario.perfis.map(id => ({ id }))
             } else {
@@ -82,9 +83,9 @@ export default {
         novoUsuario() {
             this.$api.mutate({
                 mutation: gql`mutation (
-                    $nome: String
-                    $email: String
-                    $senha: String
+                    $nome: String!
+                    $email: String!
+                    $senha: String!
                     $perfis: [PerfilFiltro]
                 ) {
                     novoUsuario (
