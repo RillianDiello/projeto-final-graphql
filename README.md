@@ -1,4 +1,3 @@
-# projeto-final-graphql
 
 Final Project of GraphQL course from COD3
 
@@ -8,8 +7,9 @@ Was used the Knex, to building and maintenance from Querys, with him is possible
 
 It was also used the packages:  bcrypt-nodejs, which although it is depreciated, presents a good solution to encryption of passwords to our fake users.(https://www.npmjs.com/package/bcrypt-nodejs). To autentication, was used jwt-simple, which is a package relatively actualizad. (https://www.npmjs.com/package/jwt-simple)
 
-it was necessary to instalations of NPX, for direct execution of  knex binaries for ease. (https://www.npmjs.com/package/npx)
+It is necessary to instalation of NPX, for direct execution of  knex binaries for ease. (https://www.npmjs.com/package/npx)
 
+Also, is necessary a simple knowledge about vue and vuex, for components development and use. 
 
-
+Basically, the project is divide in two parts. Where the first part is composed of Backend, using GraphQL and all yours caracteristcs (schems, mutations, querys, index, types, etc). And the second part is composed by Frontend in VueJS, here have components, screens basically consuming the Backend api.
 
