@@ -13,3 +13,6 @@ Also, is necessary a simple knowledge about vue and vuex, for components develop
 
 Basically, the project is divide in two parts. Where the first part is composed of Backend, using GraphQL and all yours caracteristcs (schems, mutations, querys, index, types, etc). And the second part is composed by Frontend in VueJS, here have components, screens basically consuming the Backend api.
 
+First scene, where have three abas, for authentication, users and profiles. And each tab have yours components.
+
+![First scene](imagens/telaInicial.png)
