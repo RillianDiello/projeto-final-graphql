@@ -9,9 +9,9 @@
                             <Erros :erros="erros" />
                         </div>
                         <v-text-field label="ID"
-                            v-model.number="perfil.id" />
+                            v-model.number="filtro.id" />
                         <v-text-field label="Nome"
-                            v-model="perfil.nome" />
+                            v-model="filtro.nome" />
                         <v-btn color="primary" class="ml-0 mt-3"
                             @click="consultar">
                             Consultar
@@ -38,12 +38,13 @@
 
 <script>
 import Erros from '../comum/Erros'
+import gql from 'graphql-tag'
 
 export default {
     components: { Erros },
     data() {
         return {
-            perfil: {},
+            filtro: {},
             perfis: [],
             dados: null,
             erros: null
@@ -57,7 +58,36 @@ export default {
     },
     methods: {
         consultar() {
-            // implementar
+            this.$api.query({
+                query: gql`
+                    query (
+                        $id: Int
+                        $nome: String
+                    ){
+                        perfil (
+                            filtro: {
+                                id: $id
+                                nome: $nome
+                            }
+                        ){
+                            id nome rotulo
+                        }
+                    }
+
+                `,
+                variables: {
+                    id : this.filtro.id,
+                    nome: this.filtro.nome
+                },
+                fetchPolicy: 'network-only'
+            }).then( resultado => {                 
+                this.dados = resultado.data.perfil
+                this.erros = null
+                this.filtro = {}
+            }).catch( e => {
+                this.dados = []
+                this.erros = e
+            })
         }
     }
 }
